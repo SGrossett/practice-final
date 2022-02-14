@@ -13,5 +13,21 @@ export default NextAuth({
   secret: process.env.JWT_SECRET,
   pages: {
     signIn: '/login'
+  },
+  callbacks: {
+    async jwt({ token, account, user }){
+      // Initial sign in
+      if (account && user) {
+        return {
+          ...token,
+          accessToken: account.access_token,
+          accessTokenExpires: account.expires_in * 1000,
+          refreshToken: account.refresh_token,
+          username: account.providerAccountId,
+        }
+      }
+
+      
+    }
   }
-})
+});
