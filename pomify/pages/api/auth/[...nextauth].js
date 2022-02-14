@@ -1,6 +1,23 @@
 import NextAuth from 'next-auth';
 import SpotifyProvider from 'next-auth/providers/spotify';
-import { LOGIN_URL } from '../../../helpers/spotify';
+import spotifyApi, { LOGIN_URL } from '../../../helpers/spotify';
+
+async function refreshAccessToken(token) {
+  try {
+    spotifyApi.setAccessToken(token.accessToken);
+    spotifyApi.setRefreshToken(token.refreshToken);
+
+    const { body: refreshedToken } = await spotifyApi.refreshAccessToken();
+    
+  } catch (error) {
+    console.log(error)
+
+    return {
+      ...token,
+      error: "RefreshAccessTokenError",
+    }
+  }
+}
 
 export default NextAuth({
   providers: [
