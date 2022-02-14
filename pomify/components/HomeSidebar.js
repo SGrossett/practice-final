@@ -4,36 +4,34 @@ import { FiLogOut } from "react-icons/fi";
 
 function HomeSidebar() {
   return (
-    <div>
-      <div>
-        <button>
-          <IoHomeOutline />
-          <p>Home</p>
-        </button>
-      </div>
-      <div>
-        <button>
-          <FaRegChartBar />
-          <p>Progress</p>
-        </button>
-      </div>
-      <div>
-        <button>
-          <IoGameControllerOutline />
-          <p>Break</p>
-        </button>
-      </div>
-      <div>
-        <button>
-          <IoSettingsOutline />
-          <p>Settings</p>
-        </button>
-      </div>
-      <div>
-        <button>
-          <FiLogOut />
-          <p>Logout</p>
-        </button>
+    <div className="text-gray-500 p-5 border-gray-900">
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <button className="flex items-center space-x-2 hover:text-white">
+            <IoHomeOutline size="1.5em"/>
+            <p>Home</p>
+          </button>  
+          <button className="flex items-center space-x-2 hover:text-white">
+            <FaRegChartBar size="1.5em"/>
+            <p>Progress</p>
+          </button>
+          <button className="flex items-center space-x-2 hover:text-white">
+            <IoGameControllerOutline size="1.5em"/>
+            <p>Break</p>
+          </button>
+        </div>
+
+        <div className="space-y-4">
+          <button className="flex items-center space-x-2 hover:text-white">
+            <IoSettingsOutline size="1.5em"/>
+            <p>Settings</p>
+          </button>
+          <button className="flex items-center space-x-2 hover:text-white">
+            <FiLogOut size="1.5em"/>
+            <p>Logout</p>
+          </button>
+          <hr className="border-t-[0.1px] border-gray-900" />
+        </div>
       </div>
     </div>
   )
