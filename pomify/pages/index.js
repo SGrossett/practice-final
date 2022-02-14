@@ -1,10 +1,10 @@
+import HomeSidebar from '../components/HomeSidebar';
+
 export default function Home() {
   return (
-    <div className="">
-      <h1>Spotify Pomodoro app</h1>
-
+    <div className="bg-black h-screen overflow-hidden">
       <main>
-        {/* Sidebar */}
+        <HomeSidebar />
         {/* Center */}
         {/* Sidebar */}
       </main>
