@@ -1,15 +1,18 @@
-import { FaRegChartBar } from 'react-icons/fa';
 import { IoHomeOutline, IoSettingsOutline, IoGameControllerOutline } from 'react-icons/io5';
+import { FaRegChartBar } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
 import { GoSearch } from "react-icons/go";
 
 import { signOut, useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
+import { playlistIdState } from '../atoms/playlistAtom';
+import { useRecoilState } from 'recoil';
 import useSpotify from '../hooks/useSpotify';
 
 function HomeSidebar() {
   const { data: session, status } = useSession();
   const [playlists, setPlaylists] = useState([]);
+  const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
   const spotifyApi = useSpotify();
 
   useEffect(() => {
@@ -20,7 +23,7 @@ function HomeSidebar() {
     }
   }, [session, spotifyApi]);
 
-  console.log(playlists);
+  console.log("You picked playlist: ", playlistId);
 
   return (
     <div className='text-gray-500 p-5 border-gray-900 text-sm border-r overflow-y-scroll h-screen scrollbar-hide'>
@@ -59,7 +62,7 @@ function HomeSidebar() {
           <hr className='border-t-[0.1px] border-gray-900' />
 
           {playlists.map((playlist) => (
-            <p key={playlist.id} className='cursor-pointer hover:text-white'>{playlist.name}</p>
+            <p key={playlist.id} onClick={() => setPlaylistId(playlist.id)} className='cursor-pointer hover:text-white'>{playlist.name}</p>
           ))}
           
         </div>
