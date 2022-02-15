@@ -5,6 +5,7 @@ import { IoChevronDownSharp } from 'react-icons/io5';
 import { playlistIdState, playlistState } from '../atoms/playlistAtom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import useSpotify from '../hooks/useSpotify';
+import Songs from '../components/Songs';
 
 const colours = [
   'from-indigo-500',
@@ -61,6 +62,10 @@ function Center() {
           <h1 className='text-2xl md:text-3xl xl:text-5xl'>{playlist?.name}</h1>
         </div>
       </section>
+
+      <div>
+        <Songs />
+      </div>
     </div>
   )
 }
