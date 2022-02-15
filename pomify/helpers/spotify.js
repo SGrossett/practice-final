@@ -1,27 +1,26 @@
-import SpotifyWebApi from "spotify-web-api-node";
+import SpotifyWebApi from 'spotify-web-api-node';
 
 const scopes = [
-  "user-read-email",
-  "playlist-read-private",
-  "playlist-read-collaborative",
-  "user-read-email",
-  "streaming",
-  "user-read-private",
-  "user-library-read",
-  "user-read-playback-state",
-  "user-modify-playback-state",
-  "user-read-currently-playing",
-  "user-read-currently-played",
-  "user-follow-to-read"
-].join(", ");
+  'user-read-email',
+  'playlist-read-private',
+  'playlist-read-collaborative',
+  'streaming',
+  'user-read-private',
+  'user-library-read',
+  'user-read-playback-state',
+  'user-modify-playback-state',
+  'user-read-currently-playing',
+  'user-read-recently-played',
+  'user-follow-read'
+].join(',');
 
 const params = {
-  scope: scopes,
+  scope: scopes
 };
 
-const queryParamsString = new URLSearchParams(params);
+const queryParamString = new URLSearchParams(params).toString();
 
-const LOGIN_URL = `https://account.spotify.com/authorize?${queryParamsString.toString()}`;
+const LOGIN_URL = `https://accounts.spotify.com/authorize?${queryParamString}`;
 
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
