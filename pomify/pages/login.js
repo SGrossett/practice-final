@@ -7,7 +7,11 @@ function Login( { providers }) {
 
       {Object.values(providers).map((provider) => (
         <div key={provider.name}>
-          <button className="bg-[#18D860] text-white p-4 rounded-lg">Login with {provider.name}</button>
+          <button className="bg-[#18D860] text-white p-4 rounded-lg"
+            onClick={() => signIn(provider.id, { callbackUrl: "/" })}
+          >
+            Login with {provider.name}
+          </button>
         </div>
       ))}
     </div>
