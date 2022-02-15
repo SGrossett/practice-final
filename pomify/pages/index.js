@@ -1,3 +1,4 @@
+import { getSession } from 'next-auth/react';
 import HomeSidebar from '../components/HomeSidebar';
 import Center from '../components/Center';
 
@@ -12,5 +13,14 @@ export default function Home() {
 
       <div>{/* Player and timer */}</div>
     </div>
-  )
+  );
+}
+
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  return {
+    props: { session }
+  }
 }
