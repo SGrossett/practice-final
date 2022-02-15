@@ -26,7 +26,7 @@ function HomeSidebar() {
   console.log("You picked playlist: ", playlistId);
 
   return (
-    <div className='text-gray-500 p-5 border-gray-900 text-sm border-r overflow-y-scroll h-screen scrollbar-hide'>
+    <div className='text-gray-500 p-5 border-gray-900 text-xs lg:text-sm border-r overflow-y-scroll h-screen scrollbar-hide sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex'>
       <div className='space-y-8'>
         <div className='space-y-4'>
           <button className='flex items-center space-x-2 hover:text-white'>
