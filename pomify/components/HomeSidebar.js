@@ -37,6 +37,9 @@ function HomeSidebar() {
             <GoSearch size='1.5em'/>
             <p>Search</p>
           </button>
+        </div>
+
+        <div className='space-y-4'>
           <button className='flex items-center space-x-2 hover:text-white'>
             <FaRegChartBar size='1.5em'/>
             <p>Progress</p>
@@ -45,20 +48,7 @@ function HomeSidebar() {
             <IoGameControllerOutline size='1.5em'/>
             <p>Break</p>
           </button>
-        </div>
-
-        <div className='space-y-4'>
-          <button className='flex items-center space-x-2 hover:text-white'>
-            <IoSettingsOutline size='1.5em'/>
-            <p>Settings</p>
-          </button>
-          <button className='flex items-center space-x-2 hover:text-white'
-            onClick={() => signOut()}
-          >
-            <FiLogOut size='1.5em'/>
-            <p>Logout</p>
-          </button>
-
+          
           <hr className='border-t-[0.1px] border-gray-900' />
 
           {playlists.map((playlist) => (
