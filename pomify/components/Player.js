@@ -36,10 +36,15 @@ function Player() {
   }, [currentTrackIdState, spotifyApi, session]);
 
   return (
-    <div>
-      {/* Left */}
-      <div>
-        <img className='hidden md:inline h-10 w-10' src={songInfo?.album.images?.[0]?.url} alt='' />
+    <div className='text-white h-20 bg-gradient-to-b from-black to-gray-900 grid grid-cols-3 text-xs md:text-base px-2 md:px-8'>
+      <div className='flex items-center space-x-4'>
+        <img className='hidden md:inline h-12 w-12' src={songInfo?.album.images?.[0]?.url} alt='' />
+        <div className=''>
+          <h3 className='text-md'>{songInfo?.name}</h3>
+          <p className='text-gray-500 text-xs'>{songInfo?.artists?.[0]?.name}</p>
+        </div>
+
+        
       </div>
     </div>
   )
