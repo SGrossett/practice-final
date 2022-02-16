@@ -1,11 +1,10 @@
 import { shuffle } from 'lodash';
-import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import { IoChevronDownSharp } from 'react-icons/io5';
 import { playlistIdState, playlistState } from '../atoms/playlistAtom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import useSpotify from '../hooks/useSpotify';
 import Songs from '../components/Songs';
+import UserIcon from '../components/UserIcon';
 
 const colours = [
   'from-indigo-500',
@@ -18,7 +17,6 @@ const colours = [
 ];
 
 function Center() {
-  const { data: session } = useSession();
   const spotifyApi = useSpotify();
   const playlistId = useRecoilValue(playlistIdState);
 
@@ -39,18 +37,8 @@ function Center() {
 
   return (
     <div className='flex-grow h-screen overflow-y-scroll'>
-      <header className='absolute top-5 right-8'>
-        <div className='flex items-center bg-black text-white space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-2'>
-          <img 
-            className='rounded-full w-10 h-10'
-            src={session?.user.image}
-            alt='' 
-          />
-          <h2>{session?.user.name}</h2>
-          <IoChevronDownSharp />
-        </div>
-      </header>
-
+      <UserIcon />
+   
       <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${colour} h-80 text-white p-8`}>
         <img 
           className='w-44 h-44 shadow-2xl'
