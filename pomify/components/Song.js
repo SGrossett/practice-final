@@ -1,3 +1,5 @@
+import { millisToMinutesAndSeconds } from '../helpers/duration';
+
 function Song({ order, track }) {
   return (
     <div className='grid grid-cols-2'>
@@ -15,7 +17,10 @@ function Song({ order, track }) {
 
       </div>
 
-      
+      <div className='flex items-center justify-between ml-auto md:ml-0'>
+        <p className='hidden md:inline'>{track.track.album.name}</p>
+        <p>{millisToMinutesAndSeconds(track.track.duration_ms)}</p>
+      </div>
     </div>
   )
 }
