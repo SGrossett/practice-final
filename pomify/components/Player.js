@@ -1,3 +1,9 @@
+import { TiArrowShuffle, TiArrowLoop } from "react-icons/ti";
+import { IoPlayCircleOutline, IoRepeatSharp } from "react-icons/io5";
+import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
+import { MdOutlineRepeat } from 'react-icons/md';
+// import { GrExpand } from 'react-icons/gr';
+
 import { currentTrackIdState, isPlayingState } from '../atoms/songAtom';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
@@ -43,8 +49,14 @@ function Player() {
           <h3 className='text-md'>{songInfo?.name}</h3>
           <p className='text-gray-500 text-xs'>{songInfo?.artists?.[0]?.name}</p>
         </div>
+      </div>
 
-        
+      <div className='flex items-center space-x-7 justify-center'>
+        <TiArrowShuffle className='button'/>
+        <AiFillStepBackward className='button'/>
+        <IoPlayCircleOutline className='button w-9 h-9'/>
+        <AiFillStepForward className='button'/>
+        <MdOutlineRepeat className='button'/>
       </div>
     </div>
   )
