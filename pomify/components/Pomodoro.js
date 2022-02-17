@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import Button from './Button';
 
 const Pomodoro = () => {
   const [timer, setTimer] = useState({
-    pomodoro: 25.0,
-    short: 5.0,
-    long: 15.0,
+    pomodoro: 25,
+    short: 5,
+    long: 15,
     active: 'pomodoro'
   });
 
@@ -20,6 +21,10 @@ const Pomodoro = () => {
     }
     console.log(timer)
   };
+  
+  const submit = (event) => {
+    event.preventDefault();
+  }
 
   return (
     <div className=''>
@@ -29,6 +34,7 @@ const Pomodoro = () => {
           <input  name='shortBreak' onChange={changeTime} value={timer.short} />
           <input  name='longBreak' onChange={changeTime} value={timer.long} />
         </div>
+        <Button onCLick={submit} title='Set Timer' />
       </form>
     </div>
   )
