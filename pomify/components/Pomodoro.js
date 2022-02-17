@@ -12,9 +12,9 @@ const Pomodoro = () => {
     <div className=''>
       <form noValidate>
         <div className=''>
-          <input type='text' name='timer' value="" />
-          <input type='text' name='shortBreak' value="" />
-          <input type='text' name='longBreak' value="" />
+          <input type='text' name='timer' value={timer.pomodoro} />
+          <input type='text' name='shortBreak' value={timer.short} />
+          <input type='text' name='longBreak' value={timer.long} />
         </div>
       </form>
     </div>
