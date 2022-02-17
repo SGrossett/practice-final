@@ -1,6 +1,13 @@
-import React from 'react'
+import { useState } from 'react';
 
 const Pomodoro = () => {
+  const [timer, setTimer] = useState({
+    pomodoro: 25.0,
+    short: 5.0,
+    long: 15.0,
+    active: 'pomodoro'
+  });
+
   return (
     <div className=''>
       <form noValidate>
