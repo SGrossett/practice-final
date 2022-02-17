@@ -65,6 +65,7 @@ function Player() {
 
   return (
     <div className='text-white h-20 bg-gradient-to-b from-black to-gray-900 grid grid-cols-3 text-xs md:text-base px-2 md:px-8'>
+      {/* left */}
       <div className='flex items-center space-x-4'>
         <img className='hidden md:inline h-12 w-12' src={songInfo?.album.images?.[0]?.url} alt='' />
         <div className=''>
@@ -72,29 +73,39 @@ function Player() {
           <p className='text-gray-500 text-xs'>{songInfo?.artists?.[0]?.name}</p>
         </div>
       </div>
-
-      <div className='flex items-center space-x-7 justify-center'>
-        <div onClick={shuffle}>
-          {isShuffled ? (
-            <TiArrowShuffle className='button fill-green-400'/> ) : ( <TiArrowShuffle className='button'/>
-          )}
-        </div>
-
-        <AiFillStepBackward className='button'/>
-
-        <div onClick={handlePlayPause}>
-          {isPlaying ? (
-            <IoPauseCircleOutline className='button w-9 h-9'/> ) : ( <IoPlayCircleOutline className='button w-9 h-9'/>
+      
+      {/* center */}
+      <div>
+        {/* center top */}
+        <div className='mt-4 flex items-center space-x-7 justify-center'>
+          <div onClick={shuffle}>
+            {isShuffled ? (
+              <TiArrowShuffle className='button fill-green-400'/> ) : ( <TiArrowShuffle className='button'/>
             )}
+          </div>
+
+          <AiFillStepBackward className='button'/>
+
+          <div onClick={handlePlayPause}>
+            {isPlaying ? (
+              <IoPauseCircleOutline className='button w-9 h-9'/> ) : ( <IoPlayCircleOutline className='button w-9 h-9'/>
+              )}
+          </div>
+
+          <AiFillStepForward className='button'/>
+
+          <div onClick={loop}>
+            {isLooped ? (
+              <MdOutlineRepeat className='button fill-green-400'/> ) : ( <MdOutlineRepeat className='button'/>
+            )}
+          </div>
         </div>
 
-        <AiFillStepForward className='button'/>
-
-        <div onClick={loop}>
-          {isLooped ? (
-            <MdOutlineRepeat className='button fill-green-400'/> ) : ( <MdOutlineRepeat className='button'/>
-          )}
+        {/* center bottom */}
+        <div className='flex self-end justify-center'>
+          
         </div>
+
       </div>
     </div>
   )
