@@ -2,12 +2,15 @@ import { TiArrowShuffle, TiArrowLoop } from "react-icons/ti";
 import { IoPlayCircleOutline, IoPauseCircleOutline } from "react-icons/io5";
 import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
 import { MdOutlineRepeat } from 'react-icons/md';
-// import { GrExpand } from 'react-icons/gr';
+import { ImVolumeMute, ImVolumeLow, ImVolumeMedium, ImVolumeHigh  } from 'react-icons/im'
+import { GrExpand } from 'react-icons/gr';
+
 
 import { currentTrackIdState, isPlayingState } from '../atoms/songAtom';
 import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
+import { debounce } from 'lodash';
 import useSpotify from "../hooks/useSpotify";
 import useSongInfo from '../hooks/useSongInfo';
 
@@ -18,7 +21,7 @@ function Player() {
 
   const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-  // const [volume, setVolume] = useState(50);
+  const [volume, setVolume] = useState(50);
   const [isShuffled, setShuffled] = useState(false);
   const [isLooped, setLooped] = useState(false);
 
@@ -37,11 +40,24 @@ function Player() {
     }
   };
 
+  const debouncedAdjustVolume = useCallback(
+    debounce((volume) => {
+      spotifyApi.setVolume(volume).catch((error) => {})
+    }, 500),
+    []
+  );
+
   useEffect(() => {
     if (spotifyApi.getAccessToken() & !currentTrackId) {
       fetchCurrentSong();
     }
   }, [currentTrackIdState, spotifyApi, session]);
+
+  useEffect(() => {
+    if (volume > 0 && volume < 100) {
+      debouncedAdjustVolume(volume);
+    }
+  }, [volume]);
 
   const handlePlayPause = () => {
     spotifyApi.getMyCurrentPlaybackState().then((data) => {
@@ -107,6 +123,24 @@ function Player() {
         </div>
 
       </div>
+
+      {/* right */}
+      <div className='flex items-center space-x-3 md:space-x-4 justify-end pr-5'>
+        <div onClick={() =>  volume > 0 && setVolume(volume - 10)}>
+          { volume >=66 ? (
+              <ImVolumeHigh /> ) : ( (volume >= 33) ? <ImVolumeMedium /> : (volume >= 0) ? <ImVolumeLow /> : <ImVolumeMute />
+          )}
+        </div>
+        <input 
+          className='w-14 md:28'
+          type='range'
+          value={volume}
+          onChange={(e) => setVolume(Number(e.target.value))}
+          min={0}
+          max={100}
+        />
+      </div>
+
     </div>
   )
 }
