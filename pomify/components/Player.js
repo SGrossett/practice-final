@@ -19,6 +19,8 @@ function Player() {
   const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
   // const [volume, setVolume] = useState(50);
+  const [isShuffled, setShuffled] = useState(false);
+  const [isLooped, setLooped] = useState(false);
 
   const songInfo = useSongInfo();
 
@@ -41,6 +43,14 @@ function Player() {
     }
   }, [currentTrackIdState, spotifyApi, session]);
 
+  const shuffle = () => {
+    setShuffled(!isShuffled);
+  };
+
+  const loop = () => {
+    setLooped(!isLooped);
+  };
+
   return (
     <div className='text-white h-20 bg-gradient-to-b from-black to-gray-900 grid grid-cols-3 text-xs md:text-base px-2 md:px-8'>
       <div className='flex items-center space-x-4'>
@@ -52,11 +62,19 @@ function Player() {
       </div>
 
       <div className='flex items-center space-x-7 justify-center'>
-        <TiArrowShuffle className='button'/>
+        <div onClick={shuffle}>
+          {isShuffled ? (
+            <TiArrowShuffle className='button fill-green-400'/> ) : ( <TiArrowShuffle className='button'/>
+          )}
+        </div>
         <AiFillStepBackward className='button'/>
         <IoPlayCircleOutline className='button w-9 h-9'/>
         <AiFillStepForward className='button'/>
-        <MdOutlineRepeat className='button'/>
+        <div onClick={loop}>
+          {isLooped ? (
+            <MdOutlineRepeat className='button fill-green-400'/> ) : ( <MdOutlineRepeat className='button'/>
+          )}
+        </div>
       </div>
     </div>
   )
