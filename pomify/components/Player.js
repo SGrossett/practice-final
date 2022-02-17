@@ -3,7 +3,7 @@ import { IoPlayCircleOutline, IoPauseCircleOutline } from "react-icons/io5";
 import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
 import { MdOutlineRepeat } from 'react-icons/md';
 import { ImVolumeMute, ImVolumeLow, ImVolumeMedium, ImVolumeHigh  } from 'react-icons/im'
-import { GrExpand } from 'react-icons/gr';
+import { CgArrowsExpandRight } from 'react-icons/cg';
 
 
 import { currentTrackIdState, isPlayingState } from '../atoms/songAtom';
@@ -126,7 +126,7 @@ function Player() {
 
       {/* right */}
       <div className='flex items-center space-x-3 md:space-x-4 justify-end pr-5'>
-        <div onClick={() =>  volume > 0 && setVolume(volume - 10)}>
+        <div className='button' onClick={() =>  volume > 0 && setVolume(volume - 10)}>
           { volume >=66 ? (
               <ImVolumeHigh /> ) : ( (volume >= 33) ? <ImVolumeMedium /> : (volume >= 0) ? <ImVolumeLow /> : <ImVolumeMute />
           )}
@@ -139,6 +139,7 @@ function Player() {
           min={0}
           max={100}
         />
+        <CgArrowsExpandRight className='button'/>
       </div>
 
     </div>
