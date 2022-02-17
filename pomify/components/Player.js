@@ -1,5 +1,5 @@
 import { TiArrowShuffle, TiArrowLoop } from "react-icons/ti";
-import { IoPlayCircleOutline, IoRepeatSharp } from "react-icons/io5";
+import { IoPlayCircleOutline, IoPauseCircleOutline } from "react-icons/io5";
 import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
 import { MdOutlineRepeat } from 'react-icons/md';
 // import { GrExpand } from 'react-icons/gr';
@@ -43,6 +43,18 @@ function Player() {
     }
   }, [currentTrackIdState, spotifyApi, session]);
 
+  const handlePlayPause = () => {
+    spotifyApi.getMyCurrentPlaybackState().then((data) => {
+      if (data.body.is_playing) {
+        spotifyApi.pause();
+        setIsPlaying(false);
+      } else {
+        spotifyApi.play();
+        setIsPlaying(true);
+      }
+    });
+  };
+
   const shuffle = () => {
     setShuffled(!isShuffled);
   };
@@ -67,9 +79,17 @@ function Player() {
             <TiArrowShuffle className='button fill-green-400'/> ) : ( <TiArrowShuffle className='button'/>
           )}
         </div>
+
         <AiFillStepBackward className='button'/>
-        <IoPlayCircleOutline className='button w-9 h-9'/>
+
+        <div onClick={handlePlayPause}>
+          {isPlaying ? (
+            <IoPauseCircleOutline className='button w-9 h-9'/> ) : ( <IoPlayCircleOutline className='button w-9 h-9'/>
+            )}
+        </div>
+
         <AiFillStepForward className='button'/>
+
         <div onClick={loop}>
           {isLooped ? (
             <MdOutlineRepeat className='button fill-green-400'/> ) : ( <MdOutlineRepeat className='button'/>
