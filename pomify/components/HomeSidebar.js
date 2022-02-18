@@ -2,6 +2,7 @@ import { IoHomeOutline, IoSettingsOutline, IoGameControllerOutline } from 'react
 import { FaRegChartBar } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
 import { GoSearch } from "react-icons/go";
+import { LogoutIcon } from "@heroicons/react/outline";
 
 import { signOut, useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
@@ -47,6 +48,10 @@ function HomeSidebar() {
           <button className='flex items-center space-x-2 hover:text-white'>
             <IoGameControllerOutline size='1.5em'/>
             <p>Break</p>
+          </button>
+          <button className='flex items-center space-x-2 hover:text-white' onClick={() => signOut()}>
+            <LogoutIcon className="h-6 w-6"/>
+            <p>Logout</p>
           </button>
           
           <hr className='border-t-[0.1px] border-gray-900' />

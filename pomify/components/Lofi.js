@@ -1,4 +1,3 @@
-
 import useSpotify from '../hooks/useSpotify';
 
 function Lofi({ lofi, setLofi }) {
