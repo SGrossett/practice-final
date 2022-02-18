@@ -12,15 +12,22 @@ const Pomodoro = () => {
   const changeTime = (time) => {
     const { name, value } = time.target;
 
-    if (name === 'timer') {
-      setTimer({ ...timer, pomodoro: parseInt(value) });
-    } else if (name === 'shortBreak') {
-      setTimer({ ...timer, short: parseInt(value) });
-    } else if (name === 'longBreak') {
-      setTimer({ ...timer, long: parseInt(value) });
+    if (isNaN(value) || value === '') { 
+      setTimer({ ...timer });  
+    } else {
+      if (name === 'timer' && value) {
+        setTimer({ ...timer, pomodoro: parseInt(value) });
+      } else if (name === 'shortBreak') {
+        setTimer({ ...timer, short: parseInt(value) });
+      } else if (name === 'longBreak') {
+        setTimer({ ...timer, long: parseInt(value) });
+      } else { 
+        setTimer({ ...timer });  
+      }
     }
-    console.log(timer)
   };
+
+  console.log(timer)
   
   const submit = (event) => {
     event.preventDefault();
