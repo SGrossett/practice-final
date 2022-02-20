@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import Button from './Button';
-
-const Pomodoro = () => {
+import { useState } from 'react';
+  
+const SetPomodoro = () => {
   const [timer, setTimer] = useState({
     pomodoro: 25,
     short: 5,
@@ -28,23 +27,23 @@ const Pomodoro = () => {
 
   return (
     <div className=''>
-      <form noValidate>
-        <div className='text-black'>
-          <div>
+      <form className='flex flex-col' onCLick={submitTimer} noValidate>
+        <div className={`w-40 h-full border-outer rounded-3xl flex flex-col justify-center items-center border-gray-800 text-gray-500 text-center`}>
+          <div className='m-3'>
             <label className=''>
-              <span className='text-white'>Pomodoro</span>
+              <span className=''>Pomodoro</span>
                 <input
                   name='timer'
-                  type='number'
+                  
                   min='25'
                   max='60'
-                  className='timer-input'
+                  className='timer-input text-center pl-2'
                   onChange={changeTime}
                   value={timer.pomodoro}
                 />
             </label>
           </div>
-          <div>
+          <div className='m-3'>
             <label className=''>
               <span className=''>Short Break</span>
                 <input
@@ -52,13 +51,13 @@ const Pomodoro = () => {
                   type='number'
                   min='5'
                   max='30'
-                  className='timer-input'
+                  className='timer-input text-center pl-5'
                   onChange={changeTime}
                   value={timer.short}
                 />
             </label>
           </div>
-          <div>
+          <div className='mt-3 mb-2'>
             <label className=''>
               <span className=''>Long Break</span>
                 <input
@@ -66,17 +65,20 @@ const Pomodoro = () => {
                   type='number'
                   min='15'
                   max='60'
-                  className='timer-input'
+                  className='timer-input text-center pl-5 scrollbar-hide'
                   onChange={changeTime}
                   value={timer.long}
                 />
             </label>
           </div>
+          <br />
         </div>
-        <Button onCLick={submitTimer} title='Set Timer' />
+        <button className='mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded'>
+          Set Timer
+        </button>
       </form>
     </div>
   )
 }
 
-export default Pomodoro;
+export default SetPomodoro;

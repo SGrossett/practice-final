@@ -11,5 +11,5 @@
   
 }
 .timer-input {
-  @apply w-24 h-20 bg-timerBg flex justify-center items-center text-white mx-2 text-5xl tracking-widest font-inputText bg-gradient-to-b from-gray-900 to-gray-800;
+  @apply w-24 h-20 bg-timerBg flex justify-center items-center text-white text-5xl tracking-widest font-inputText bg-gradient-to-b from-gray-900 to-gray-800;
 }
