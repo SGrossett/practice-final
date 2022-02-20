@@ -22,7 +22,7 @@ const Pomodoro = () => {
     console.log(timer)
   };
   
-  const submit = (event) => {
+  const submitTimer = (event) => {
     event.preventDefault();
   }
 
@@ -30,11 +30,50 @@ const Pomodoro = () => {
     <div className=''>
       <form noValidate>
         <div className='text-black'>
-          <input  name='timer' onChange={changeTime} value={timer.pomodoro} />
-          <input  name='shortBreak' onChange={changeTime} value={timer.short} />
-          <input  name='longBreak' onChange={changeTime} value={timer.long} />
+          <div>
+            <label className=''>
+              <span className='text-white'>Pomodoro</span>
+                <input
+                  name='timer'
+                  type='number'
+                  min='25'
+                  max='60'
+                  className='timer-input'
+                  onChange={changeTime}
+                  value={timer.pomodoro}
+                />
+            </label>
+          </div>
+          <div>
+            <label className=''>
+              <span className=''>Short Break</span>
+                <input
+                  name='shortBreak'
+                  type='number'
+                  min='5'
+                  max='30'
+                  className='timer-input'
+                  onChange={changeTime}
+                  value={timer.short}
+                />
+            </label>
+          </div>
+          <div>
+            <label className=''>
+              <span className=''>Long Break</span>
+                <input
+                  name='longBreak'
+                  type='number'
+                  min='15'
+                  max='60'
+                  className='timer-input'
+                  onChange={changeTime}
+                  value={timer.long}
+                />
+            </label>
+          </div>
         </div>
-        <Button onCLick={submit} title='Set Timer' />
+        <Button onCLick={submitTimer} title='Set Timer' />
       </form>
     </div>
   )
