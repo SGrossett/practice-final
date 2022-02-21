@@ -4,14 +4,23 @@ import Center from '../components/Center';
 import Player from '../components/Player';
 import TimerSideBar from '../components/TimerSideBar';
 import { useState } from 'react';
+import Game from '../components/Game/Game'
 
 export default function Home() {
   const [lofi, setLofi] = useState(false);
+  const [ticTac, setTicTac] = useState(false);
+  const [gameTime, setGameTime] = useState(false);
   return (
     <div className="bg-black h-screen overflow-hidden">
       <main className="flex">
-        <HomeSidebar />
-        <Center lofi={lofi} setLofi={setLofi} />
+        <HomeSidebar gameTime={gameTime} setGameTime={setGameTime}  /> 
+          {gameTime? <Game /> :  
+          <Center 
+          lofi={lofi} 
+          setLofi={setLofi} 
+          ticTac={ticTac} 
+          setTicTac={setTicTac} />
+          }
         <TimerSideBar />
       </main>
 
