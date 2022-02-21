@@ -5,7 +5,7 @@ import StatsCenter from "../components/Stats/StatsCenter"
 
 function Statistics() {
     return (
-      <div className="bg-gray-500 h-screen">
+      <div className="bg-black h-screen">
         <div className="">
           <StatsSidebar />
           <StatsCenter />

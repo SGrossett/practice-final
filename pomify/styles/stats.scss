@@ -8,16 +8,25 @@
 .stats {
   width: 90%;
   margin: auto;
-  min-height: 90vh;
-  @include flex(space-between, center, row);
-  text-align: center;
+  display: flex;
+  min-height: 70vh;
+  align-items: center;
   flex-wrap: wrap;
-  h2 {
-    margin: 5rem;
-  }
+  color: white;
 }
 
 .stat1,
 .stat2 {
-  flex: 1 1 40rem;
+  text-align: center;
+  flex: 2 20rem;
+  min-height: 40vh;
+  margin: 2rem 5rem;
+  box-shadow: 10px 10px 10px 10px rgba(151, 5, 236, 0.1),
+    0px 20px 20px rgba(0, 0, 0, 0.1);
+}
+.stat1 h2,
+.stat2 h2 {
+  padding: 1rem;
+  line-height: 1.8;
+  font-size: 2.2rem;
 }
