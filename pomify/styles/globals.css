@@ -13,3 +13,9 @@
 .timer-input {
   @apply w-24 h-20 bg-timerBg flex justify-center items-center text-white text-5xl tracking-widest font-inputText bg-gradient-to-b from-gray-900 to-gray-800;
 }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

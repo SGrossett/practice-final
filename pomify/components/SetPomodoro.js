@@ -51,7 +51,7 @@ const SetPomodoro = () => {
                   type='number'
                   min='5'
                   max='30'
-                  className='timer-input text-center pl-5'
+                  className='timer-input text-center pl-5 appearance-none'
                   onChange={changeTime}
                   value={timer.short}
                 />
