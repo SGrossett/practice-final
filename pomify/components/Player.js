@@ -15,7 +15,7 @@ import useSpotify from "../hooks/useSpotify";
 import useSongInfo from '../hooks/useSongInfo';
 
 
-function Player() {
+function Player({lofi, setLofi}) {
   const spotifyApi = useSpotify();
   const { data: session, status } = useSession();
 
@@ -139,7 +139,7 @@ function Player() {
           min={0}
           max={100}
         />
-        <CgArrowsExpandRight className='button'/>
+        <CgArrowsExpandRight onClick={() => setLofi(!lofi)} className='button'/>
       </div>
 
     </div>

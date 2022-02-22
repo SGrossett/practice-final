@@ -1,0 +1,24 @@
+.song-container {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5rem;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.rotateSong {
+  animation: rotate 8s linear forwards infinite;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  transition: all 2s ease;
+}

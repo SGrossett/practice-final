@@ -13,7 +13,7 @@ const Countdown = ({ key = 1, timer = 5, animate = true, children,startPomodoro,
       <CountdownCircleTimer
       key={key}
       isPlaying={animate}
-      duration={studyTime * 1}
+      duration={studyTime * 60}
       colors={['#0754c1', 0.33]}
       strokeWidth={8}
       trailColor="#1f2937"

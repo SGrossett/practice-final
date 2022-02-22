@@ -4,6 +4,8 @@ import { playlistIdState, playlistState } from '../atoms/playlistAtom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import useSpotify from '../hooks/useSpotify';
 import Songs from '../components/Songs';
+import Lofi from "./Lofi"
+import Game from '../components/Game/Game'
 import UserIcon from '../components/UserIcon';
 
 const colours = [
@@ -16,7 +18,7 @@ const colours = [
   'from-purple-500'
 ];
 
-function Center() {
+function Center({lofi, setLofi, ticTac, set}) {
   const spotifyApi = useSpotify();
   const playlistId = useRecoilValue(playlistIdState);
 
@@ -52,7 +54,7 @@ function Center() {
       </section>
 
       <div>
-        <Songs />
+      {lofi? <Lofi lofi={lofi} setLofi={setLofi}/> : <Songs/>}
       </div>
     </div>
   )

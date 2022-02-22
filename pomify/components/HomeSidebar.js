@@ -2,6 +2,8 @@ import { IoHomeOutline, IoSettingsOutline, IoGameControllerOutline } from 'react
 import { FaRegChartBar } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
 import { GoSearch } from "react-icons/go";
+import { LogoutIcon } from "@heroicons/react/outline";
+import Link from 'next/link';
 
 import { signOut, useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
@@ -9,7 +11,7 @@ import { playlistIdState } from '../atoms/playlistAtom';
 import { useRecoilState } from 'recoil';
 import useSpotify from '../hooks/useSpotify';
 
-function HomeSidebar() {
+function HomeSidebar({gameTime, setGameTime}) {
   const { data: session, status } = useSession();
   const [playlists, setPlaylists] = useState([]);
   const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
@@ -27,9 +29,12 @@ function HomeSidebar() {
 
   return (
     <div className='text-gray-500 p-5 h-screen border-gray-900 text-xs lg:text-sm border-r overflow-y-scroll scrollbar-hide sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex pb-40'>
-      <div className='space-y-8'>
+      <div className='space-y-3'>
         <div className='space-y-4'>
-          <button className='flex items-center space-x-2 hover:text-white'>
+          <button 
+          className='flex items-center space-x-2 hover:text-white' 
+          onClick={() => {setGameTime(false)
+          }}>
             <IoHomeOutline size='1.5em'/>
             <p>Home</p>
           </button>
@@ -39,14 +44,22 @@ function HomeSidebar() {
           </button>
         </div>
 
+        <hr className='border-t-[0.1px] border-gray-900' />
+
         <div className='space-y-4'>
-          <button className='flex items-center space-x-2 hover:text-white'>
-            <FaRegChartBar size='1.5em'/>
-            <p>Progress</p>
-          </button>
-          <button className='flex items-center space-x-2 hover:text-white'>
+          <Link href="/statistics">
+            <button className='flex items-center space-x-2 hover:text-white'>
+              <FaRegChartBar size='1.5em'/>
+              <p>Progress</p>
+            </button>
+          </Link>
+          <button className='flex items-center space-x-2 hover:text-white' onClick={() => setGameTime(!gameTime)}>
             <IoGameControllerOutline size='1.5em'/>
             <p>Break</p>
+          </button>
+          <button className='flex items-center space-x-2 hover:text-white' onClick={() => signOut()}>
+            <LogoutIcon className="h-6 w-6"/>
+            <p>Logout</p>
           </button>
           
           <hr className='border-t-[0.1px] border-gray-900' />
