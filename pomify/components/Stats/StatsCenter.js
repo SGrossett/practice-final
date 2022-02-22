@@ -5,20 +5,22 @@ function StatsCenter() {
     <div className=''>
       <div className="stats">
         <div class="stat1">
-            <h2>Total Studying Time</h2>
-            <p>A mock travel guide webpage I created with simple HTML, CSS, and Sass. </p>
+            <h2>Games Stats</h2>
+            <p>Tic-Tac-Toe: 0 wins</p>
         </div>
         <div class="stat2">
             <h2>Total Break Time</h2>
-            <p>A mock photographer porfolio I created with simple HTML, CSS, and Sass. </p>
+            <p>Break Time: 10 mins</p>
         </div>
         <div class="stat1">
-            <h2>Another Stat</h2>
-            <p>A mock travel guide webpage I created with simple HTML, CSS, and Sass. </p>
+            <h2>Tasks Completed</h2>
+            <p>You have completed 2 tasks today </p>
+            <p>All time tasks completed: 148 </p>
         </div>
         <div class="stat2">
-            <h2>Yet Another Stat</h2>
-            <p>A mock photographer porfolio I created with simple HTML, CSS, and Sass. </p>
+            <h2>Total Studying Time</h2>
+            <p>Today: 120 mins</p>
+            <p>Overall: 123123123231 mins </p>
         </div>
       </div>
     </div>

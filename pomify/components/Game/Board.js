@@ -4,16 +4,20 @@ import {Square} from "./Square";
 export function Board() {
   
   const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
+  // const [xIsNext, setXIsNext] = useState(true);
 
   const handleClick = (i) => {
     const squaresClone = squares.slice();
     if (squares[i] !== null){
       return;
     }
-    squaresClone[i] = xIsNext ? 'X' : 'O';
+    squaresClone[i] = 'X';
     setSquares(squaresClone);
-    setXIsNext(!xIsNext);
+
+    const spaces = calculateSpaces(squaresClone)
+    const cpu_move = chooseRandomSquare(spaces)
+
+    squaresClone[cpu_move] = 'O';    
   }
   const renderSquare = (i) => {
     return <Square
@@ -22,12 +26,30 @@ export function Board() {
         handleClick(i) } }
     />;
   }
+  const calculateSpaces = (list) => {
+    let index = 0;
+    let available_indexes = []
+    for (const space of list) {
+      if (space === null) {
+        available_indexes.push(index)
+      }
+      index += 1;
+    }
+    return available_indexes;
+  }
+  const chooseRandomSquare = (list) => {
+    return list[Math.floor(Math.random()*list.length)]
+  }
+
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
     status = 'Winner: ' + winner;
-  } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+  } else if(calculateSpaces(squares).length === 0) {
+    status = "Wow you're awful, start over agagin"
+  }
+  else {
+    status = 'Make Your Move';
   }
   return (
     <div className="flex flex-col items-center justify-center">
@@ -49,7 +71,6 @@ export function Board() {
       </div>
       <button className="rounded-lg bg-white mt-2" onClick={() => {
         setSquares(Array(9).fill(null))
-        setXIsNext(true)
       }}>
         Start New Game
       </button>
