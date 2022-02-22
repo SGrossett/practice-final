@@ -57,10 +57,6 @@ function HomeSidebar({gameTime, setGameTime}) {
             <IoGameControllerOutline size='1.5em'/>
             <p>Break</p>
           </button>
-          <button className='flex items-center space-x-2 hover:text-white' onClick={() => signOut()}>
-            <LogoutIcon className="h-6 w-6"/>
-            <p>Logout</p>
-          </button>
           
           <hr className='border-t-[0.1px] border-gray-900' />
 
