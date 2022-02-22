@@ -1,4 +1,4 @@
-function StatsCenter({lofi, setLofi, ticTac, set}) {
+function StatsCenter() {
 
 
   return (
