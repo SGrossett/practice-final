@@ -18,8 +18,8 @@ const SetPomodoro = () => {
     } else if (name === 'longBreak') {
       setTimer({ ...timer, long: parseInt(value) });
     }
-    console.log(timer)
   };
+  console.log(timer)
   
   const submitTimer = (event) => {
     event.preventDefault();
@@ -28,16 +28,16 @@ const SetPomodoro = () => {
   return (
     <div className=''>
       <form className='flex flex-col' onCLick={submitTimer} noValidate>
-        <div className={`w-40 h-full border-outer rounded-3xl flex flex-col justify-center items-center border-gray-800 text-gray-500 text-center`}>
+        <div className={`w-36 lg:w-40 h-full border-outer rounded-3xl flex flex-col justify-center items-center border-gray-800 text-gray-500 text-center`}>
           <div className='m-3'>
             <label className=''>
               <span className=''>Pomodoro</span>
                 <input
                   name='timer'
-                  
+                  type='number'
                   min='25'
                   max='60'
-                  className='timer-input text-center pl-2'
+                  className='timer-input'
                   onChange={changeTime}
                   value={timer.pomodoro}
                 />
@@ -51,7 +51,7 @@ const SetPomodoro = () => {
                   type='number'
                   min='5'
                   max='30'
-                  className='timer-input text-center pl-5 appearance-none'
+                  className='timer-input'
                   onChange={changeTime}
                   value={timer.short}
                 />
@@ -65,7 +65,7 @@ const SetPomodoro = () => {
                   type='number'
                   min='15'
                   max='60'
-                  className='timer-input text-center pl-5 scrollbar-hide'
+                  className='timer-input'
                   onChange={changeTime}
                   value={timer.long}
                 />
@@ -73,7 +73,7 @@ const SetPomodoro = () => {
           </div>
           <br />
         </div>
-        <button className='mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded'>
+        <button className='mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded' onClick={submitTimer}>
           Set Timer
         </button>
       </form>
