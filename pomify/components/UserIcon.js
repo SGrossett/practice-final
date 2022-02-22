@@ -8,7 +8,7 @@ export default function Example() {
   const { data: session } = useSession();
 
   return (
-    <div className='w-56 text-right fixed top-5 right-8'>
+    <div className='w-56 text-right absolute top-5 mr-4'>
       <Menu as='div' className='relative inline-block text-left'>
         <div>
           <Menu.Button className='flex items-center bg-black text-white space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full pr-1'>

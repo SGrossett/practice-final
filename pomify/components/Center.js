@@ -37,7 +37,9 @@ function Center() {
 
   return (
     <div className='flex-grow h-screen overflow-y-scroll scrollbar-hide'>
-      {/* <UserIcon /> */}
+      <div className='flex justify-end'>
+        <UserIcon />
+      </div>
    
       <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${colour} h-80 text-white p-8`}>
         <img 
@@ -48,6 +50,7 @@ function Center() {
         <div>
           <p>PLAYLIST</p>
           <h1 className='text-2xl md:text-3xl xl:text-5xl'>{playlist?.name}</h1>
+          <p className='mt-3'>{playlist?.description}</p>
         </div>
       </section>
 
