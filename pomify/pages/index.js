@@ -1,4 +1,4 @@
-import { ReactDOM } from 'react';
+import { ReactDOM, useState } from 'react';
 import ContextSettingsProvider from '../context/ContextSettings';
 import { getSession } from 'next-auth/react';
 import HomeSidebar from '../components/HomeSidebar';
@@ -8,12 +8,15 @@ import TimerSideBar from '../components/TimerSideBar';
 
 
 export default function Home() {
+  const [startPomodoro, setStartPomodoro] = useState(false);
   return (
     <div className="bg-black h-screen overflow-hidden">
       <main className="flex">
         <HomeSidebar />
         <Center />
-        <TimerSideBar />
+        <TimerSideBar 
+        startPomodoro={startPomodoro} 
+        setStartPomodoro={setStartPomodoro} />
       </main>
 
       <div className='sticky bottom-0'>
