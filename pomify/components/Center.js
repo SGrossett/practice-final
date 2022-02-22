@@ -5,6 +5,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import useSpotify from '../hooks/useSpotify';
 import Songs from '../components/Songs';
 import UserIcon from '../components/UserIcon';
+import Search from '../components/Search';
 
 const colours = [
   'from-indigo-500',
@@ -22,6 +23,7 @@ function Center() {
 
   const [ colour, setColour ]= useState(null);
   const [playlist, setPlaylist] = useRecoilState(playlistState);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     setColour(shuffle(colours).pop());
@@ -37,6 +39,9 @@ function Center() {
 
   return (
     <div className='flex-grow h-screen overflow-y-scroll scrollbar-hide'>
+      <div>
+        <Search search={search}  setSearch={setSearch}/>
+      </div>
       <div className='flex justify-end'>
         <UserIcon />
       </div>
