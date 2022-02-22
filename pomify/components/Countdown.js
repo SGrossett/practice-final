@@ -1,11 +1,11 @@
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
-const Countdown = ({ key, timer, animate, children }) => {
+const Countdown = ({ key = 1, timer = 5, animate = true, children }, props) => {
   return (
     <CountdownCircleTimer
       key={key}
       isPlaying={animate}
-      duration={timer * 60}
+      duration={timer * 5}
       colors={['#0754c1', 0.33]}
       strokeWidth={8}
       trailColor="#1f2937"
@@ -13,7 +13,7 @@ const Countdown = ({ key, timer, animate, children }) => {
         {/* stop countdown circle */}
       }
     >
-      {({ remainingTime }) => <Text>{remainingTime}</Text>}
+      {({ remainingTime }) => remainingTime }
     </CountdownCircleTimer>
   )
 }

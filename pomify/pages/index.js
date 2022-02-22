@@ -7,13 +7,6 @@ import Player from '../components/Player';
 import TimerSideBar from '../components/TimerSideBar';
 
 
-ReactDOM.render(
-  <ContextSettingsProvider>
-    <TimerSideBar />
-  </ContextSettingsProvider>,
-
-  document.getElementById('root')
-);
 export default function Home() {
   return (
     <div className="bg-black h-screen overflow-hidden">

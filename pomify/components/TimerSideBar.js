@@ -1,4 +1,5 @@
 import SetPomodoro from './SetPomodoro';
+import Countdown from './Countdown'
 
 function TimerSidebar() {
   
@@ -10,7 +11,8 @@ function TimerSidebar() {
       </div>
 
       <div className=''>
-        <SetPomodoro />
+        {/* <SetPomodoro /> */}
+        <Countdown />
       </div>
     </div>
   )
