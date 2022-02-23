@@ -81,9 +81,9 @@ function Center() {
         <div>
           <Search search={search}  setSearch={setSearch}/>
         </div>
-        <div className=''>
+        <div className='absolute ml-8 '>
 
-          <div className='grid grid-col-2 h lg:grid-cols-3 xl:grid-cols-4 gap-x-4 pt-20'>
+          <div className='bg-gradient-to-b from-black to-gray-900 border border-gray-500 p-6 grid grid-col-2 mt-24 lg:grid-cols-3 xl:grid-cols-4 gap-x-10 '>
             {searchResults.slice(0, 4).map((track) => (
               <TrackSearchResults track={track} key={track.uri} />
             ))}
