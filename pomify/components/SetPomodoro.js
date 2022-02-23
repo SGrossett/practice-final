@@ -3,11 +3,8 @@ import { useState } from 'react';
 const SetPomodoro = ({startPomodoro,
   setStartPomodoro,
   studyTime,
-  setStudyTime,
-  breakTime,
-  setBreakTime,
-  longBreak,
-  setLongBreak,}) => {
+  setStudyTime
+  }) => {
   const [timer, setTimer] = useState({
     pomodoro: 25,
     short: 5,

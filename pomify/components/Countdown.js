@@ -1,19 +1,22 @@
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
-const Countdown = ({ key = 1, timer = 5, animate = true, children,startPomodoro,
+const Countdown = ({ key = 1, timer = 5, animate = true,startPomodoro,
   setStartPomodoro,
   studyTime,
-  setStudyTime,
-  breakTime,
-  setBreakTime,
-  longBreak,
-  setLongBreak}) => {
+  setStudyTime}) => {
+    const children = ({ remainingTime }) => {
+      const minutes = Math.floor(remainingTime / 60)
+      const seconds = remainingTime % 60
+    
+      return `${minutes}:${seconds}`
+    }
+
   return (
     <div className='flex flex-col items-center'>
       <CountdownCircleTimer
       key={key}
       isPlaying={animate}
-      duration={studyTime * 60}
+      duration={studyTime * 1}
       colors={['#0754c1', 0.33]}
       strokeWidth={8}
       trailColor="#1f2937"
