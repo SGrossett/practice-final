@@ -6,6 +6,7 @@ import useSpotify from '../hooks/useSpotify';
 import Songs from '../components/Songs';
 import UserIcon from '../components/UserIcon';
 import Search from '../components/Search';
+import TrackSearchResults from '../components/TrackSearchResults';
 
 const colours = [
   'from-indigo-500',
@@ -36,8 +37,10 @@ function Center() {
     }).catch(error => console.log('Something went wrong', error))
   }, [spotifyApi, playlistId]);
 
+  let cancel = false;
   useEffect(() => {
     spotifyApi.searchTracks(search).then((data) => {
+      if (cancel) return;
       setSearchResults(
         data.body.tracks.items.map((track) => {
           return {
@@ -49,6 +52,7 @@ function Center() {
           };
         })
       )
+      return () => (cancel = true);
     }).catch(error => console.log('Something went wrong', error))
   }, [spotifyApi, search]);
 
@@ -72,9 +76,19 @@ function Center() {
   //console.log(playlist);
 
   return (
-    <div className='flex-grow h-screen overflow-y-scroll scrollbar-hide'>
+    <div className=' flex-grow h-screen overflow-y-scroll scrollbar-hide'>
       <div>
-        <Search search={search}  setSearch={setSearch}/>
+        <div>
+          <Search search={search}  setSearch={setSearch}/>
+        </div>
+        <div className=''>
+
+          <div className='grid grid-col-2 h lg:grid-cols-3 xl:grid-cols-4 gap-x-4 pt-20'>
+            {searchResults.slice(0, 4).map((track) => (
+              <TrackSearchResults track={track} key={track.uri} />
+            ))}
+          </div>
+        </div>
       </div>
       <div className='flex justify-end'>
         <UserIcon />
