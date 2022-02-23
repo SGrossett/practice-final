@@ -52,6 +52,22 @@ function Center() {
     }).catch(error => console.log('Something went wrong', error))
   }, [spotifyApi, search]);
 
+  // useEffect(() => {
+  //   spotifyApi.searchPlaylists(search).then((data) => {
+  //     setSearchResults(
+  //       data.body.playlists.items.map((playlist) => {
+  //         return {
+  //           id: playlist.id,
+  //           title: playlist.name,
+  //           uri: playlist.uri,
+  //           albumUrl: track.album.images[0].url
+  //         };
+  //       })
+  //     )
+  //   }).catch(error => console.log('Something went wrong', error))
+  // }, [spotifyApi, search]);
+
+
   console.log('searchResults:', searchResults);
   //console.log(playlist);
 
