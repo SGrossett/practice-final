@@ -21,9 +21,10 @@ function Center() {
   const spotifyApi = useSpotify();
   const playlistId = useRecoilValue(playlistIdState);
 
-  const [ colour, setColour ]= useState(null);
+  const [colour, setColour]= useState(null);
   const [playlist, setPlaylist] = useRecoilState(playlistState);
   const [search, setSearch] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     setColour(shuffle(colours).pop());
@@ -35,6 +36,23 @@ function Center() {
     }).catch(error => console.log('Something went wrong', error))
   }, [spotifyApi, playlistId]);
 
+  useEffect(() => {
+    spotifyApi.searchTracks(search).then((data) => {
+      setSearchResults(
+        data.body.tracks.items.map((track) => {
+          return {
+            id: track.id,
+            artist: track.artists[0].name,
+            title: track.name,
+            uri: track.uri,
+            albumUrl: track.album.images[0].url
+          };
+        })
+      )
+    }).catch(error => console.log('Something went wrong', error))
+  }, [spotifyApi, search]);
+
+  console.log('searchResults:', searchResults);
   //console.log(playlist);
 
   return (
