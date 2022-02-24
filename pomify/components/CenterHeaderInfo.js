@@ -5,7 +5,6 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import useSpotify from '../hooks/useSpotify';
 import Songs from '../components/Songs';
 import Lofi from "./Lofi"
-import CenterHeaderInfo from "./CenterHeaderInfo"
 import Game from '../components/Game/Game'
 import UserIcon from '../components/UserIcon';
 
@@ -19,7 +18,7 @@ const colours = [
   'from-purple-500'
 ];
 
-function Center({lofi, setLofi, ticTac}) {
+function CenterHeaderInfo({lofi, setLofi, ticTac}) {
   const spotifyApi = useSpotify();
   const playlistId = useRecoilValue(playlistIdState);
 
@@ -40,14 +39,24 @@ function Center({lofi, setLofi, ticTac}) {
 
   return (
     <div className='flex-grow h-screen overflow-y-scroll scrollbar-hide'>
-      
-
-      <div>
-      {lofi? null : <CenterHeaderInfo />}
-      {lofi? <Lofi lofi={lofi} setLofi={setLofi}/> : <Songs/>}
+      <div className='flex justify-end'>
+        <UserIcon />
       </div>
+     
+      <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${colour} h-80 text-white p-8`}>
+        <img 
+          className='w-44 h-44 shadow-2xl'
+          src={playlist?.images?.[0]?.url}
+          alt='' 
+        />
+        <div>
+          <p>PLAYLIST</p>
+          <h1 className='text-2xl md:text-3xl xl:text-5xl'>{playlist?.name}</h1>
+          <p className='mt-3'>{playlist?.description}</p>
+        </div>
+      </section>
     </div>
   )
 }
 
-export default Center;
+export default CenterHeaderInfo;
