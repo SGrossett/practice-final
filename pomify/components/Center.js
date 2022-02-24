@@ -26,7 +26,7 @@ function Center() {
   const [playlist, setPlaylist] = useRecoilState(playlistState);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-
+ 
   useEffect(() => {
     setColour(shuffle(colours).pop());
   }, [playlistId]);
@@ -73,23 +73,25 @@ function Center() {
 
 
   console.log('searchResults:', searchResults);
-  //console.log(playlist);
 
   return (
     <div className=' flex-grow h-screen overflow-y-scroll scrollbar-hide'>
-      <div>
+      <div >
         <div>
           <Search search={search}  setSearch={setSearch}/>
         </div>
-        <div className='absolute ml-8 '>
-
-          <div className='bg-gradient-to-b from-black to-gray-900 border border-gray-500 p-6 grid grid-col-2 mt-24 lg:grid-cols-3 xl:grid-cols-4 gap-x-10 '>
-            {searchResults.slice(0, 4).map((track) => (
-              <TrackSearchResults track={track} key={track.uri} />
-            ))}
-          </div>
-        </div>
+        
+        {search.length > 0 ? (
+          <div className='absolute ml-8 '>
+            <div className='bg-gradient-to-b from-black to-gray-900 border border-gray-500 p-6 grid grid-col-2 mt-24 lg:grid-cols-3 xl:grid-cols-4 gap-x-10 '>
+              {searchResults.slice(0, 4).map((track) => (
+                <TrackSearchResults track={track} key={track.uri} />
+              ))}
+            </div>
+          </div> ) : ( <div></div> )
+        }
       </div>
+
       <div className='flex justify-end'>
         <UserIcon />
       </div>

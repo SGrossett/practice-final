@@ -1,10 +1,12 @@
 import React from 'react';
-import { IoSearchOutline } from 'react-icons/io5';
+import { useState } from 'react';
+import { IoSearchOutline, IoCloseOutline } from 'react-icons/io5';
 
 function Search({ search, setSearch }) {
+ 
   return (
-    <div className='absolute top-5 ml-7 bg-white sm:w-64 md:w-80 lg:w-96 rounded-full overflow-hidden border-2 border-gray-300 p-2 px-5 pr-8 flex items-center'>
-      <div className=''>
+    <div className='absolute top-5 ml-7 bg-white sm:w-64 md:w-80 lg:w-96 rounded-full overflow-hidden border-2 border-gray-300 p-2 px-5 pr-3 flex items-center cursor-pointer'>
+      <div>
         <IoSearchOutline size='1.3em'/>
       </div>
       <input 
