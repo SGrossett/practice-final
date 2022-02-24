@@ -3,8 +3,11 @@ import { useState } from 'react';
 const SetPomodoro = ({startPomodoro,
   setStartPomodoro,
   studyTime,
-  setStudyTime
-  }) => {
+  setStudyTime,
+  breakTime,
+  setBreakTime,
+  longBreak,
+  setLongBreak,}) => {
   const [timer, setTimer] = useState({
     pomodoro: 25,
     short: 5,
@@ -82,21 +85,21 @@ const SetPomodoro = ({startPomodoro,
           setStartPomodoro(!startPomodoro)
           setStudyTime(timer['pomodoro'])
           }}>
-          Set Timer
+          Start Pomodoro
         </button>
         <button className='mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded' onClick={() => {
           
           setStartPomodoro(!startPomodoro)
           setStudyTime(timer['short'])
           }}>
-          Set Short Break Timer
+          Start Short Break 
         </button>
         <button className='mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded' onClick={() => {
           
           setStartPomodoro(!startPomodoro)
           setStudyTime(timer['long'])
           }}>
-          Set Long Break Timer
+          Start Long Break
         </button>
       </form>
     </div>

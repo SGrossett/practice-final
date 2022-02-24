@@ -19,6 +19,11 @@ function TimerSidebar({startPomodoro, setStartPomodoro}) {
          startPomodoro={startPomodoro} 
          setStartPomodoro={setStartPomodoro} 
          studyTime={studyTime}
+         setStudyTime={setStudyTime}
+         breakTime={breakTime}
+         setBreakTime={setBreakTime}
+         longBreak={longBreak}
+         setLongBreak={setLongBreak}
         />  : 
         <SetPomodoro 
         startPomodoro={startPomodoro} 
