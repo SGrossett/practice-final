@@ -8,6 +8,8 @@ import Lofi from "./Lofi"
 import CenterHeaderInfo from "./CenterHeaderInfo"
 import Game from '../components/Game/Game'
 import UserIcon from '../components/UserIcon';
+import Search from '../components/Search';
+import TrackSearchResults from '../components/TrackSearchResults';
 
 const colours = [
   'from-indigo-500',
@@ -23,9 +25,11 @@ function Center({lofi, setLofi, ticTac}) {
   const spotifyApi = useSpotify();
   const playlistId = useRecoilValue(playlistIdState);
 
-  const [ colour, setColour ]= useState(null);
+  const [colour, setColour]= useState(null);
   const [playlist, setPlaylist] = useRecoilState(playlistState);
-
+  const [search, setSearch] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+ 
   useEffect(() => {
     setColour(shuffle(colours).pop());
   }, [playlistId]);
@@ -36,11 +40,46 @@ function Center({lofi, setLofi, ticTac}) {
     }).catch(error => console.log('Something went wrong', error))
   }, [spotifyApi, playlistId]);
 
-  //console.log(playlist);
+  let cancel = false;
+  useEffect(() => {
+    spotifyApi.searchTracks(search).then((data) => {
+      if (cancel) return;
+      setSearchResults(
+        data.body.tracks.items.map((track) => {
+          return {
+            id: track.id,
+            artist: track.artists[0].name,
+            title: track.name,
+            uri: track.uri,
+            albumUrl: track.album.images[0].url
+          };
+        })
+      )
+      return () => (cancel = true);
+    }).catch(error => console.log('Something went wrong', error))
+  }, [spotifyApi, search]);
+
+  // useEffect(() => {
+  //   spotifyApi.searchPlaylists(search).then((data) => {
+  //     setSearchResults(
+  //       data.body.playlists.items.map((playlist) => {
+  //         return {
+  //           id: playlist.id,
+  //           title: playlist.name,
+  //           uri: playlist.uri,
+  //           albumUrl: track.album.images[0].url
+  //         };
+  //       })
+  //     )
+  //   }).catch(error => console.log('Something went wrong', error))
+  // }, [spotifyApi, search]);
+
+
+  console.log('searchResults:', searchResults);
 
   return (
-    <div className='flex-grow h-screen overflow-y-scroll scrollbar-hide'>
-      
+    <div className=' flex-grow h-screen overflow-y-scroll scrollbar-hide'>
+     
 
       <div>
       {lofi? null : <CenterHeaderInfo />}

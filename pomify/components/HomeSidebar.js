@@ -29,7 +29,7 @@ function HomeSidebar({gameTime, setGameTime}) {
 
   return (
     <div className='text-gray-500 p-5 h-screen border-gray-900 text-xs lg:text-sm border-r overflow-y-scroll scrollbar-hide sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex pb-40'>
-      <div className='space-y-3'>
+      <div className='space-y-8'>
         <div className='space-y-4'>
           <button 
           className='flex items-center space-x-2 hover:text-white' 
@@ -44,7 +44,6 @@ function HomeSidebar({gameTime, setGameTime}) {
           </button>
         </div>
 
-        <hr className='border-t-[0.1px] border-gray-900' />
 
         <div className='space-y-4'>
           <Link href="/statistics">
