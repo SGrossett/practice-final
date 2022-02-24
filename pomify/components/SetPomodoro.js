@@ -79,27 +79,31 @@ const SetPomodoro = ({startPomodoro,
             </label>
           </div>
           <br />
+          
         </div>
-        <button className='mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded' onClick={() => {
+        <div>
+          <p className='text-center mt-9 text-xl '>Start Timer</p>
+        </div>
+        <button className='timer-button mt-4' onClick={() => {
           
           setStartPomodoro(!startPomodoro)
           setStudyTime(timer['pomodoro'])
           }}>
-          Start Pomodoro
+          Pomodoro
         </button>
-        <button className='mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded' onClick={() => {
+        <button className='timer-button mt-8' onClick={() => {
           
           setStartPomodoro(!startPomodoro)
           setStudyTime(timer['short'])
           }}>
-          Start Short Break 
+          Short Break 
         </button>
-        <button className='mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded' onClick={() => {
+        <button className='timer-button mt-8' onClick={() => {
           
           setStartPomodoro(!startPomodoro)
           setStudyTime(timer['long'])
           }}>
-          Start Long Break
+          Long Break
         </button>
       </form>
     </div>
