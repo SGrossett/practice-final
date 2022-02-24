@@ -18,7 +18,7 @@ const colours = [
   'from-purple-500'
 ];
 
-function Center({lofi, setLofi, ticTac, set}) {
+function Center({lofi, setLofi, ticTac}) {
   const spotifyApi = useSpotify();
   const playlistId = useRecoilValue(playlistIdState);
 
