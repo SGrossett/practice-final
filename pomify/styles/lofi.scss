@@ -1,0 +1,92 @@
+.song-container {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5rem;
+}
+#flower {
+  position: absolute;
+  bottom: 0%;
+  left: -20%;
+  z-index: -1;
+  animation: plant-shake 2.5s infinite ease alternate 2s;
+  transform-origin: bottom;
+  max-height: 80%;
+}
+
+#cloud {
+  z-index: -1;
+  animation: cloud 5s ease infinite alternate;
+}
+
+#writing-hand {
+  animation: hand 1.5s ease infinite alternate;
+}
+// #hair-and-head {
+//   animation: head 1.5s ease infinite alternate;
+// }
+#whole-body {
+  animation: body 5s ease infinite alternate;
+}
+
+@keyframes cloud {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-30%);
+  }
+}
+
+@keyframes hand {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-2%);
+  }
+}
+@keyframes head {
+  from {
+    transform: rotatez(1.5deg);
+  }
+  to {
+    transform: rotatez(0deg);
+  }
+}
+@keyframes body {
+  from {
+    transform: rotatez(1.5deg);
+  }
+  to {
+    transform: rotatez(0deg);
+  }
+}
+
+@keyframes plant-shake {
+  from {
+    transform: rotatez(-5deg);
+  }
+  to {
+    transform: rotatez(0deg);
+  }
+}
+
+.rotateSong {
+  animation: rotate 8s linear forwards infinite;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  transition: all 2s ease;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

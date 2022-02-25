@@ -7,7 +7,7 @@ export async function middleware(req) {
   const { pathname } = req.nextUrl;
 
   if (token && pathname.includes('/login')) {
-    return NextResponse.redirect('/');
+    return NextResponse.redirect('http://localhost:3000');
   }
   
   if (pathname.includes('/api/auth') || token) {
@@ -15,6 +15,6 @@ export async function middleware(req) {
   }
 
   if (!token && pathname !== '/login') {
-    return NextResponse.redirect('/login');
+    return NextResponse.redirect('http://localhost:3000/login');
   }
 }

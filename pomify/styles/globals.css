@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@500;600;700&family=Staatliches&family=Teko:wght@600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,4 +9,33 @@
   .button {
     @apply h-5 w-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out;
   }
+  
+}
+.timer-input {
+  @apply text-center pl-2 w-20 h-16 lg:w-24 lg:h-20 bg-timerBg flex justify-center items-center text-white text-3xl md:text-4xl lg:text-5xl tracking-widest font-inputText bg-gradient-to-b from-gray-900 to-gray-800;
+}
+
+.timer-button {
+  @apply w-[8rem] self-center rounded-full hover:scale-105 bg-gradient-to-b from-[#4dcffd] to-[#033b50] hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.oswald {
+  font-family: 'Oswald', sans-serif;
+}
+
+.bebas-neue {
+  font-family: 'Bebas Neue', cursive;
+}
+
+.staatliches {
+  font-family: 'Staatliches', cursive;
+}
+
+.teko {
+  font-family: 'Teko', sans-serif;
 }
